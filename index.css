@@ -1,0 +1,44 @@
+h1 {
+display:flex;
+justify-content:center;
+}
+h3 {
+    display:flex;
+    justify-content:center;  
+}
+#timecounter {
+display: flex;
+justify-content: right;
+align-items: stretch;
+padding-top:10px;
+margin-left:15px;
+}
+.position {
+    height: 200px;
+    width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+}
+
+.container {
+    width: 800;
+    max-width:80%;
+}
+.btn-grid {
+    display:grid;
+    gap:15px;
+}
+.btn {
+    background-color: darkmagenta;
+    border:1px solid;
+    border-color: darkmagenta;
+    font-size:25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.btn-grid-1 {
+   
+    
+}
