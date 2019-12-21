@@ -52,50 +52,72 @@ var secondsElapsed = 0;
 var score = 0;
 
 var questionChoices = questions[0].choices;
+var titleChoices = questions[0].title;
+question.textContent = titleChoices;
 
-//display buttons
+setQuestionHeading();
+
+function setQuestionHeading() {
+  for (var i = 0; i < titleChoices.length; ++i) {}
+}
+
+//answerquestion heading and display buttons
 setQuestion();
 
 function setQuestion() {
-  questionChoices.innerHTML = "1";
+  questionChoices.innerHTML = "";
 
   for (var i = 0; i < questionChoices.length; ++i) {
     var questionChoices1 = questionChoices[i];
 
     var li = document.createElement("li");
-    li.textContent = questionChoices1;
     li.setAttribute("data-index", i);
 
     var button = document.createElement("button");
     button.classList.add("btn-lg");
+    button.classList.add("btn-primary");
     button.classList.add("btn-grid");
 
-    button.textContent = questionChoices;
+    button.textContent = questionChoices1;
 
     li.appendChild(button);
     questionList.appendChild(li);
   }
-  console.log(questionChoices1);
+  console.log(questionChoices);
 }
-function shuffledQuestions(questions) {
-  for (var i = questions.length - 1; i > 0; i--) {
-    var rand = Math.floor(Math.random() * (i + 1));
-    [questions[i], questions[rand]] = [questions[rand], questions[i]];
-    console.log(shuffledQuestions);
+// transitioning to next question
+function setNextQuestion() {
+  function shuffledQuestions(questions) {
+    for (var i = questions.length - 1; i > 0; i--) {
+      var rand = Math.floor(Math.random() * (i + 1));
+      [questions[i], questions[rand]] = [questions[rand], questions[i]];
+    }
   }
 }
 
+//questionElement.innerText = question.question;
+
+//store correct answers
+function storeAnswers() {
+  userAnswer = (
+    question.answer[i].querySelector("input[name=question" + i + "]:checked") ||
+    {}
+  ).value;
+  if (userAnswer === questions[i].answer) {
+    numCorrect++;
+  } else userAnswer === questions[i];
+  {
+  }
+  console.log(answer);
+}
+function selectAnswer() {}
+
+//timer countdown
 function renderTime() {
   minutesDisplay.textContent = getFormattedMinutes();
   secondsDisplay.textContent = getFormattedSeconds();
 }
-function showQuestion(question) {
-  //questionElement.innerText = question.question;
-}
-function selectAnswer() {}
-
-function storeHighScores() {}
-
+timer();
 function timer() {
   setTime();
 
@@ -103,4 +125,12 @@ function timer() {
     ++secondsElapsed;
     renderTime();
   }, 1000);
+}
+
+getElementById("answer-buttons").addEventListener("click", storeAnswers);
+console.log("answer-buttons");
+
+//Save High Scores
+function storeHighScores() {
+  localStorage.getItem("HighScores");
 }
