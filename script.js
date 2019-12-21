@@ -3,6 +3,9 @@ var questionElement = document.getElementById("question");
 var answerButtons = document.getElementById("answer-buttons");
 var quizStart = document.getElementById("StartQuiz");
 var timer = document.getElementById("timecounter");
+var listOfQuestions = document.getElementById("questionList");
+var questionHeader = document.getElementById("question");
+var clearButton = document.getElementById("ClearHighscores");
 
 var questions = [
   {
@@ -53,7 +56,6 @@ var score = 0;
 
 var questionChoices = questions[0].choices;
 var titleChoices = questions[0].title;
-question.textContent = titleChoices;
 
 setQuestionHeading();
 
@@ -65,6 +67,7 @@ function setQuestionHeading() {
 setQuestion();
 
 function setQuestion() {
+  questionHeader.textContent = titleChoices;
   questionChoices.innerHTML = "";
 
   for (var i = 0; i < questionChoices.length; ++i) {
@@ -81,7 +84,7 @@ function setQuestion() {
     button.textContent = questionChoices1;
 
     li.appendChild(button);
-    questionList.appendChild(li);
+    listOfQuestions.appendChild(li);
   }
   console.log(questionChoices);
 }
@@ -108,29 +111,35 @@ function storeAnswers() {
   } else userAnswer === questions[i];
   {
   }
-  console.log(answer);
 }
-function selectAnswer() {}
 
 //timer countdown
 function renderTime() {
   minutesDisplay.textContent = getFormattedMinutes();
   secondsDisplay.textContent = getFormattedSeconds();
 }
-timer();
-function timer() {
-  setTime();
 
-  interval = setInterval(function() {
-    ++secondsElapsed;
-    renderTime();
-  }, 1000);
+function startTime() {
+  timerId = setInterval(clockTick, 1000);
 }
 
-getElementById("answer-buttons").addEventListener("click", storeAnswers);
-console.log("answer-buttons");
+function minusTenSeconds() {
+  if (timer >= 10) {
+    timer -= 10;
+    timerEl.innerHTML = time;
+  }
+}
+function reset() {
+  count = 0;
+  timerEl.innerHTML = count;
+}
 
 //Save High Scores
 function storeHighScores() {
+  text.content = highScores;
   localStorage.getItem("HighScores");
 }
+
+timerEl.onclick = decrement;
+clearButton.onclick = reset;
+console.log(reset);
