@@ -1,4 +1,8 @@
-startQuiz.addEventListener("click");
+var questionsContainer = document.getElementById("question-container");
+var questionElement = document.getElementById("question");
+var answerButtons = document.getElementById("answer-buttons");
+var quizStart = document.getElementById("StartQuiz");
+var timer = document.getElementById("timecounter");
 
 var questions = [
   {
@@ -43,8 +47,60 @@ var questions = [
   }
 ];
 
+var totalSeconds = 0;
+var secondsElapsed = 0;
 var score = 0;
 
-for (var i = 0; i < questions.length; i++) {
-  var response;
+var questionChoices = questions[0].choices;
+
+//display buttons
+setQuestion();
+
+function setQuestion() {
+  questionChoices.innerHTML = "1";
+
+  for (var i = 0; i < questionChoices.length; ++i) {
+    var questionChoices1 = questionChoices[i];
+
+    var li = document.createElement("li");
+    li.textContent = questionChoices1;
+    li.setAttribute("data-index", i);
+
+    var button = document.createElement("button");
+    button.classList.add("btn-lg");
+    button.classList.add("btn-grid");
+
+    button.textContent = questionChoices;
+
+    li.appendChild(button);
+    questionList.appendChild(li);
+  }
+  console.log(questionChoices1);
+}
+function shuffledQuestions(questions) {
+  for (var i = questions.length - 1; i > 0; i--) {
+    var rand = Math.floor(Math.random() * (i + 1));
+    [questions[i], questions[rand]] = [questions[rand], questions[i]];
+    console.log(shuffledQuestions);
+  }
+}
+
+function renderTime() {
+  minutesDisplay.textContent = getFormattedMinutes();
+  secondsDisplay.textContent = getFormattedSeconds();
+}
+function showQuestion(question) {
+  //questionElement.innerText = question.question;
+}
+function selectAnswer() {}
+
+function storeHighScores() {}
+
+function timer() {
+  setTime();
+
+  interval = setInterval(function() {
+    ++secondsElapsed;
+    renderTime();
+  }, 1000);
 }

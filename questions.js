@@ -28,5 +28,15 @@ var questions = [
       "neither"
     ],
     answer: "parentheses"
+  },
+  {
+    title: "What cereal was Spencer eating in class last Saturday?",
+    choices: [
+      "Lucky Charms",
+      "Cinnamon Toast Crunch",
+      "Cheerios",
+      "Count Chocula"
+    ],
+    answer: "Cheerios"
   }
 ];

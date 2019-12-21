@@ -53,4 +53,9 @@ h3 {
   align-content: center;
   text-align: center;
   gap: 20px;
+  padding-top: 25px;
+}
+.Initials {
+  padding-top: 15px;
+  width: 365px;
 }
